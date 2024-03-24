@@ -1,3 +1,7 @@
+**About**
+
+Sentiment analyzer is a web application integrated with NLP (nltk vader library) which analyses the type of review you have given in the website and return the type of sentiment by analyzing with NLP
+
 **The web-app:**
 
 ![snap2](https://github.com/susmitbanerjee/sentiment_analyzer/assets/28000888/5d81d148-f789-49a7-bf8f-81608cfe39ba)
