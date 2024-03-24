@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Result</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .emoji {
+            font-size: 3rem;
+            margin-top: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+        .neutral {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="emoji" id="liveEmoji"></p>
+        <p class="text-center mb-4">Sentiment Analysis Summary:</p>
+        <p class="text-center">Your review: <strong>{{ review }}</strong></p>
+        <p class="text-center">Sentiment: <strong>{{ sentiment }}</strong></p>
+    </div>
+
+    <!-- Include Twemoji library for animated emojis -->
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sentiment = "{{ sentiment }}";
+            var emojiContainer = document.getElementById('liveEmoji');
+
+            function setEmoji(sentiment) {
+                var emoji;
+                if (sentiment == 'Positive') {
+                    emoji = '😃';
+                    emojiContainer.classList.add('positive');
+                } else if (sentiment == 'Negative') {
+                    emoji = '😟';
+                    emojiContainer.classList.add('negative');
+                } else {
+                    emoji = '😐';
+                    emojiContainer.classList.add('neutral');
+                }
+                emojiContainer.innerHTML = emoji;
+                twemoji.parse(emojiContainer);
+            }
+
+            setEmoji(sentiment);
+        });
+    </script>
+</body>
+</html>
